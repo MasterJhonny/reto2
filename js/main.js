@@ -7,11 +7,12 @@
     var pantalla = document.getElementById("pantalla");
     var entrada, day, dayWeek;
     var alarmas = [];
-    var bolean = true;
+    var bolean1 = false;
+    var bolean2 = false;
     var horaActual, url;
     function actualizarHora(){
         function ejecutar(){
-            if(bolean === true){
+            if(bolean1 === true){
                 for(let i = 0; i < alarmas.length; i++){
                     if(horaActual == alarmas[i].hora){
                         console.log("Ya es hora Señores..................");
@@ -53,13 +54,23 @@
     }
     function crearAlarma(){
         day = document.getElementById("day");
-        day = sacarDia(day.value);
-        diaWeek();
         entrada = document.getElementById("entrada");
-        url = document.getElementById("url")
-        alarmas.push(new Alarma(entrada.value, url.value));
-        pantalla.innerText += `La Alarma Sonara a las ${entrada.value}\n`; 
-        console.log(`La Alarma Sonara el dia ${dayWeek} ${day} a las ${entrada.value}`);
+        url = document.getElementById("url");
+        if(day.value != "" && entrada.value != "" && url.value != ""){
+            if(bolean2 === true){
+                pantalla.innerText = '';
+            }
+            day = sacarDia(day.value);
+            diaWeek();
+            alarmas.push(new Alarma(entrada.value, url.value));
+            pantalla.innerText += `La Alarma Sonara el día ${dayWeek} ${day} a las ${entrada.value}\n`; 
+            console.log(`La Alarma Sonara el dia ${dayWeek} ${day} a las ${entrada.value}`);
+            bolean1 = true;
+            bolean2 = false;
+        } else {
+            pantalla.innerText = `!Ingresa todos los campos¡`
+            bolean2 = true;
+        }
     }
     function abrirVinculo (URL){ 
         window.open(URL,"ventana1","menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes"); 
