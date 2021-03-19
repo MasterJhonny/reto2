@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarma Web</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h2>Alarma Web</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Contactos</a></li>
+                <li><a href="#">Reloj Mundial</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 id="salidaDia">Dia</h1>
+        <section>
+            <div class="salida">
+                <h1 id="salidaHora">00:00:00</h1>
+            </div>
+        </section>
+        <section class="inter">
+            <div class="entrada">
+                <form action="">
+                    <label for="">
+                        <span>hora</span>
+                        <input type="time" id="entrada" step="1">
+                    </label>
+                    <label for="">
+                        <span>url</span>
+                        <input type="text" id="url">
+                    </label>
+                </form>
+                <div class="boton">
+                    <button id="boton">Agregar Alarma</button>
+                </div>
+            </div>
+            <div class="pantalla">
+                <p id="pantalla"></p>
+            </div>
+            <audio src="./audio/tonito.mp3" id="sonido"></audio>
+        </section>
+
+    </main>
+    <script src="./js/Alarma.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

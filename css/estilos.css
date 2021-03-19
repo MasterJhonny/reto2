@@ -1,0 +1,174 @@
+:root {
+    --colorPrimary: #1c1427;
+    --colorPrimary2: #ccffbd;
+}
+
+@font-face {
+    font-family: 'ds-digitalbold_italic';
+    src: url('../digital/ds-digit-webfont.woff2') format('woff2'),
+         url('../digital/ds-digit-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: monospace;
+}
+
+header {
+    display: flex;
+    justify-content:space-between;
+    background-color: var(--colorPrimary);
+    height: 10vh;
+    align-items:center;
+}
+.logo {
+    color: var(--colorPrimary2);   
+    font-size: 2.5rem; 
+    margin-left: 2rem;
+}
+nav {
+    display:flex;
+    align-items: center;
+}
+nav ul {
+    display:flex;
+    list-style: none;
+}
+
+ul a {
+    color: var(--colorPrimary2);
+    text-decoration: none;
+    font-size: 1.9rem;
+    margin: 2rem;
+    padding:1rem;
+    border: 1px solid var(--colorPrimary);
+    border-radius:1rem;
+}
+
+ul a:hover {
+    border: 1px solid var(--colorPrimary2);
+}
+
+main, section, .boton {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;    
+}
+
+main {
+    width: 100%;
+    height: 90vh;
+    background-color: #40394a;
+}
+section {
+    width: 60%;
+    min-width: 500px;
+    max-width: 700px;
+    height: 30%;
+    background-color:var(--colorPrimary);
+    border-radius: 2rem;
+}
+
+h1 {
+    color: var(--colorPrimary2);
+    font-size:7rem;
+    text-align: center;
+    font-weight: 100;
+}
+
+#salidaHora {
+    font-family: 'ds-digitalbold_italic';
+    color: chartreuse;
+    font-size: 13rem;
+}
+.inter {
+    display: flex;
+    flex-direction:row;
+    margin-top: 1rem;
+    background-color:#7eca9c;
+    height: 35%;
+}
+.entrada, .pantalla {
+    margin: .8rem;
+    width: 40%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+}
+form, label {
+    display: flex;
+    flex-direction: column;
+}
+span {
+    font-size: 2.5rem;
+}
+input {
+    /* width: 90%; */
+    height: 3.5rem;
+    background-color: var(--colorPrimary2);
+    border:0;
+    border-radius: .6rem;
+    padding: 0 .8rem;
+}
+.boton {
+    width: 80%;
+}
+button {
+    
+    margin-top:2.5rem;
+    border-radius: .8rem;
+    padding: .6rem 1rem;
+    font-size: 1.4rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p {
+    background-color: var(--colorPrimary2);
+    font-size: 1.5rem;
+    width:100%;
+    height: 22rem;
+    padding:.4rem 1rem;
+    border:0;
+    border-radius: .6rem;
+    text-align: center;
+}
+@media (max-width: 700px){
+    nav {
+        display: none;
+    }
+    h1 {
+        font-size:3rem;
+    }
+    #salidaHora {
+        font-size: 6rem; 
+    }
+    .inter {
+        width: 90%;
+        min-width: 280px;
+        flex-direction: column;
+        height: auto;
+    
+    }
+
+    section {
+        width: 90%;
+        min-width: 280px;
+    }
+    .entrada, .pantalla {
+        width: 80%;
+    }
+    form {
+        width:100%;
+    }
+}
