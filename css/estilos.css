@@ -96,7 +96,7 @@ h1 {
     flex-direction:row;
     margin-top: 1rem;
     background-color:#7eca9c;
-    height: 35%;
+    height: auto;
 }
 .entrada, .pantalla {
     margin: .8rem;
@@ -124,13 +124,19 @@ input {
 .boton {
     width: 80%;
 }
-button {
-    
-    margin-top:2.5rem;
+.btn {
+    border: 0;
+    margin: 2.5rem 0;
     border-radius: .8rem;
-    padding: .6rem 1rem;
-    font-size: 1.4rem;
+    padding: .9rem 1rem;
+    font-size: 1.5rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #9aebba;
+    box-shadow: 1px 1px 4px #222;
 }
 
 p {
