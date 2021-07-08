@@ -6,15 +6,25 @@
     var sonido = document.getElementById("sonido");
     var pantalla = document.getElementById("pantalla");
     var entrada, day, dayWeek;
-    var alarmas = [];
-    var bolean1 = false;
+    var alarmas = new Array();
+    var alarmasMemory = JSON.parse(localStorage.getItem('menory'))
+    alarmasMemory.forEach(e => {
+        alarmas.push(new Alarma(e.hora, e.url))
+    })
+    alarmas.forEach(e => {
+        pantalla.innerText = `La alarma sonara a las ${e.hora} y se dirigira a ${e.url}\n` 
+    }) 
+    console.log(alarmas);
+    var bolean1 = true;
     var bolean2 = false;
     var horaActual, url;
+    // let data = JSON.parse(localStorage.getItem('menory')) 
+    // console.log(data)
     function actualizarHora(){
         function ejecutar(){
             if(bolean1 === true){
                 for(let i = 0; i < alarmas.length; i++){
-                    if(horaActual == alarmas[i].hora){
+                    if(horaActual === alarmas[i].hora){
                         console.log("Ya es hora Señores..................");
                         abrirVinculo(alarmas[i].url);
                         sonido.play();
@@ -63,7 +73,8 @@
             day = sacarDia(day.value);
             diaWeek();
             alarmas.push(new Alarma(entrada.value, url.value));
-            pantalla.innerText += `La Alarma Sonara el día ${dayWeek} ${day} a las ${entrada.value}\n`; 
+            console.log(alarmas)
+            localStorage.setItem('menory', JSON.stringify(alarmas))
             console.log(`La Alarma Sonara el dia ${dayWeek} ${day} a las ${entrada.value}`);
             bolean1 = true;
             bolean2 = false;
@@ -71,6 +82,7 @@
             pantalla.innerText = `!Ingresa todos los campos¡`
             bolean2 = true;
         }
+        
     }
     function abrirVinculo (URL){ 
         window.open(URL,"ventana1","menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes"); 
@@ -85,6 +97,7 @@
         dayWeek = dias[date.getDay()];
     }
     actualizarHora();
+    
     var intervalo = setInterval(actualizarHora, 999);
     boton.addEventListener("click", crearAlarma);
     
