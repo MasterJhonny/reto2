@@ -5,15 +5,17 @@
     var boton = document.getElementById("boton");
     var sonido = document.getElementById("sonido");
     var pantalla = document.getElementById("pantalla");
-    var entrada, day, dayWeek;
+    var entrada, daysValues, dayWeek;
     var alarmas = new Array();
     var alarmasMemory = JSON.parse(localStorage.getItem('menory'))
-    alarmasMemory.forEach(e => {
-        alarmas.push(new Alarma(e.hora, e.url))
-    })
-    alarmas.forEach(e => {
-        pantalla.innerText = `La alarma sonara a las ${e.hora} y se dirigira a ${e.url}\n` 
-    }) 
+    if(alarmasMemory){
+        alarmasMemory.forEach(e => {
+            alarmas.push(new Alarma(e.hora, e.url))
+        })
+        alarmas.forEach(e => {
+            pantalla.innerText = `La alarma sonara a las ${e.hora} y se dirigira a ${e.url}\n` 
+        }) 
+    }
     console.log(alarmas);
     var bolean1 = true;
     var bolean2 = false;
@@ -63,7 +65,7 @@
         return fana1 + fana2;
     }
     function crearAlarma(){
-        day = document.getElementById("day");
+        daysValues = document.getElementById("day");
         entrada = document.getElementById("entrada");
         url = document.getElementById("url");
         if(day.value != "" && entrada.value != "" && url.value != ""){
