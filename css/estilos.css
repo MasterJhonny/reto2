@@ -109,6 +109,10 @@ h1 {
 
 }
 
+.pantalla--salida {
+    overflow: auto;
+}
+
 form, label {
     display: flex;
     flex-direction: column;
@@ -145,11 +149,21 @@ input {
     padding: .9rem 1rem;
     font-size: 1.5rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #FFBCBC;
     font-weight: bold;
     cursor: pointer;
 }
 .btn:hover {
     background-color: #9aebba;
+    box-shadow: 1px 1px 4px #222;
+}
+.btn--color {
+    background-color: #D54C4C;
+    color: #ECEFA4;
+    margin: .9rem 0;
+}
+.btn--color:hover {
+    background-color: #8D2828;
     box-shadow: 1px 1px 4px #222;
 }
 
@@ -200,5 +214,10 @@ p {
     }
     form {
         width:100%;
+    }
+}
+@media (max-width: 450px) {
+    .pantalla {
+        width: 90%;
     }
 }

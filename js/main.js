@@ -3,6 +3,8 @@
     var dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
     var salidaHora = document.getElementById("salidaHora");
     var salidaDia = document.getElementById("salidaDia");
+    // variables of button
+    var boton2 = document.getElementById("boton2");
     var boton = document.getElementById("boton");
     var sonido = document.getElementById("sonido");
     var pantalla = document.getElementById("pantalla");
@@ -161,6 +163,10 @@
     
     var intervalo = setInterval(actualizarHora, 999);
     boton.addEventListener("click", crearAlarma);
+    boton2.onclick = function() {
+        localStorage.removeItem('menory')
+        location.reload()
+    }
     
     
 }())
