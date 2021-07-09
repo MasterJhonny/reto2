@@ -9,20 +9,13 @@
     var entrada, daysValues, dayWeek, dayActual;
     var alarmas = new Array();
     var alarmasMemory = JSON.parse(localStorage.getItem('menory'))
-    if(alarmasMemory){
-        alarmasMemory.forEach(e => {
-            alarmas.push(new Alarma(e.hora, e.url, e.dias))
-        })
-        alarmas.forEach(e => {
-            pantalla.innerHTML += `<p class="item">La alarma sonara los dias ${e.dias} a las <span style="font-size:1.7rem"><b>${e.hora}</b></span> y se dirigira a <a href="${e.url}" target="_blank">${e.url}</a> </p>` 
-        }) 
-    }
-    console.log(alarmas);
+
+    // variables boleanas
     var bolean1 = true;
     var bolean2 = false;
     var horaActual, url;
-    // let data = JSON.parse(localStorage.getItem('menory')) 
-    // console.log(data)
+
+    // function de actualizar la hora actual
     function actualizarHora(){
         function ejecutar(){
             if(bolean1 === true){
@@ -106,6 +99,7 @@
             // creacion de la alarma
             alarmas.push(new Alarma(entrada.value, url.value, dayWeekSelect));
             console.log(alarmas)
+            printData(alarmas)
             localStorage.setItem('menory', JSON.stringify(alarmas))
             console.log(`La Alarma Sonara los dias ${dayWeekSelect} a las ${entrada.value}`);
             bolean1 = true;
@@ -147,6 +141,22 @@
                 return 'Sabado'
         }
     }
+    // function de inprimir configuracoin de las alarmas.
+    function printData (arrayAlar) {
+        pantalla.innerText = ""
+        arrayAlar.forEach(e => {
+            pantalla.innerHTML += `<p class="item">La alarma sonara los dias ${e.dias} a las <span style="font-size:1.7rem"><b>${e.hora}</b></span> y se dirigira a <a href="${e.url}" target="_blank">${e.url}</a> </p>` 
+        }) 
+    }
+    // validacion del localstora
+    if(alarmasMemory){
+        alarmasMemory.forEach(e => {
+            alarmas.push(new Alarma(e.hora, e.url, e.dias))
+        })
+        printData(alarmas)
+    }
+    console.log(alarmas);
+
     actualizarHora();
     
     var intervalo = setInterval(actualizarHora, 999);
