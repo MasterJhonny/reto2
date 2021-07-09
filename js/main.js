@@ -1,19 +1,20 @@
 (function(){
-    var dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
+    // declaration de variable
+    var dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
     var salidaHora = document.getElementById("salidaHora");
     var salidaDia = document.getElementById("salidaDia");
     var boton = document.getElementById("boton");
     var sonido = document.getElementById("sonido");
     var pantalla = document.getElementById("pantalla");
-    var entrada, daysValues, dayWeek;
+    var entrada, daysValues, dayWeek, dayActual;
     var alarmas = new Array();
     var alarmasMemory = JSON.parse(localStorage.getItem('menory'))
     if(alarmasMemory){
         alarmasMemory.forEach(e => {
-            alarmas.push(new Alarma(e.hora, e.url))
+            alarmas.push(new Alarma(e.hora, e.url, e.dias))
         })
         alarmas.forEach(e => {
-            pantalla.innerText = `La alarma sonara a las ${e.hora} y se dirigira a ${e.url}\n` 
+            pantalla.innerHTML += `<p class="item">La alarma sonara los dias ${e.dias} a las ${e.hora} y se dirigira a ${e.url}</p>` 
         }) 
     }
     console.log(alarmas);
@@ -27,24 +28,29 @@
             if(bolean1 === true){
                 for(let i = 0; i < alarmas.length; i++){
                     if(horaActual === alarmas[i].hora){
-                        console.log("Ya es hora Señores..................");
-                        abrirVinculo(alarmas[i].url);
-                        sonido.play();
+                        for(let j = 0; j < alarmas[i].dias.length; j++) {
+                            if(alarmas[i].dias[j] === dayActual){
+                                console.log("Ya es hora Señores..................");
+                                abrirVinculo(alarmas[i].url);
+                                // sonido.play();
+                            }
+                        }
                     }
                 }      
             }
         }
-        var date = new Date();
-        var diaSemana = date.getDate();
-        var dia = date.getDay();
-        var hora = date.getHours()<10 ? "0" + date.getHours() : date.getHours();;
-        var minuto = date.getMinutes()<10 ? "0" + date.getMinutes() : date.getMinutes();
-        var segundo = date.getSeconds()<10 ? "0" + date.getSeconds() : date.getSeconds();
+        let date = new Date();
+        let diaSemana = date.getDate();
+        let dia = date.getDay();
+        let hora = date.getHours()<10 ? "0" + date.getHours() : date.getHours();;
+        let minuto = date.getMinutes()<10 ? "0" + date.getMinutes() : date.getMinutes();
+        let segundo = date.getSeconds()<10 ? "0" + date.getSeconds() : date.getSeconds();
         horaActual = `${hora}:${minuto}:${segundo}`;
         ejecutar();
         segundo = demo(segundo);
         minuto = demo(minuto);
         hora = demo(hora);
+        dayActual = deNumADia(dia)
         salidaHora.innerText = `${hora}:${minuto}:${segundo}`;
         if(dia == 0){
             salidaDia.innerText = `${dias[6]} ${diaSemana}`;
@@ -65,23 +71,47 @@
         return fana1 + fana2;
     }
     function crearAlarma(){
-        daysValues = document.getElementById("day");
+        // recuperando los vaolres del formulario
+        daysValues = document.getElementsByClassName("dias");
         entrada = document.getElementById("entrada");
         url = document.getElementById("url");
-        if(day.value != "" && entrada.value != "" && url.value != ""){
+
+        // recorer el array de diaSemana
+        let arrayValues = Object.values(daysValues)
+        console.log(arrayValues)
+        let valor = arrayValues.some(e => {
+            return e.checked === true
+        })
+
+        // valudacion de los campos del formulario
+        if(valor && entrada.value != "" && url.value != ""){
+            // function para filtra dias
+            let daySelect = (arry) => {
+                let nuevoArray = new Array()
+                arry.forEach(e => {
+                    nuevoArray.push(e.value)
+                })
+                return nuevoArray
+            }
+            // limpiar salida parrafo
             if(bolean2 === true){
                 pantalla.innerText = '';
             }
-            day = sacarDia(day.value);
-            diaWeek();
-            alarmas.push(new Alarma(entrada.value, url.value));
+            // filtrar dias seleccionados por el usuario
+            let dayTrue = arrayValues.filter(input => {
+                return input.checked === true
+            })
+            let dayWeekSelect = daySelect(dayTrue)
+
+            // creacion de la alarma
+            alarmas.push(new Alarma(entrada.value, url.value, dayWeekSelect));
             console.log(alarmas)
             localStorage.setItem('menory', JSON.stringify(alarmas))
-            console.log(`La Alarma Sonara el dia ${dayWeek} ${day} a las ${entrada.value}`);
+            console.log(`La Alarma Sonara los dias ${dayWeekSelect} a las ${entrada.value}`);
             bolean1 = true;
             bolean2 = false;
         } else {
-            pantalla.innerText = `!Ingresa todos los campos¡`
+            pantalla.innerText = `!Ingresa todos los campos requeridos¡`
             bolean2 = true;
         }
         
@@ -97,6 +127,25 @@
         var dia = document.getElementById("day");
         let date = new Date(dia.value);
         dayWeek = dias[date.getDay()];
+    }
+    // function de numero de dia a dia en texto
+    function deNumADia (valor) {
+        switch (valor) {
+            case 0:
+                return 'Domingo'
+            case 1:
+                return 'Lunes'
+            case 2:
+                return 'Martes'
+            case 3:
+                return 'Miercoles'
+            case 4:
+                return 'Jueves'
+            case 5:
+                return 'Viernes'
+            case 6:
+                return 'Sabado'
+        }
     }
     actualizarHora();
     
