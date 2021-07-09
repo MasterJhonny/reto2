@@ -14,7 +14,7 @@
             alarmas.push(new Alarma(e.hora, e.url, e.dias))
         })
         alarmas.forEach(e => {
-            pantalla.innerHTML += `<p class="item">La alarma sonara los dias ${e.dias} a las ${e.hora} y se dirigira a ${e.url}</p>` 
+            pantalla.innerHTML += `<p class="item">La alarma sonara los dias ${e.dias} a las <span style="font-size:1.7rem"><b>${e.hora}</b></span> y se dirigira a <a href="${e.url}" target="_blank">${e.url}</a> </p>` 
         }) 
     }
     console.log(alarmas);

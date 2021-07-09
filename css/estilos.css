@@ -71,9 +71,9 @@ main {
     background-color: #40394a;
 }
 section {
-    width: 60%;
+    width: 90%;
     min-width: 500px;
-    max-width: 700px;
+    max-width: 800px;
     height: 30%;
     background-color:var(--colorPrimary);
     border-radius: 2rem;
@@ -154,7 +154,7 @@ input {
 
 p {
     background-color: var(--colorPrimary2);
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     width:100%;
     height: 100%;
     margin: 1rem 0;
