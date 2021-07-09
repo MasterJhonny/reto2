@@ -147,7 +147,7 @@
     function printData (arrayAlar) {
         pantalla.innerText = ""
         arrayAlar.forEach(e => {
-            pantalla.innerHTML += `<p class="item">La alarma sonara los dias ${e.dias} a las <span style="font-size:1.7rem"><b>${e.hora}</b></span> y se dirigira a <a href="${e.url}" target="_blank">${e.url}</a> </p>` 
+            pantalla.innerHTML += `<p class="item">La alarma sonara los días ${e.dias} a las <span style="font-size:1.7rem"><b>${e.hora}</b></span> y se dirigira a <a href="${e.url}" target="_blank">${e.url}</a> </p>` 
         }) 
     }
     // validacion del localstora

@@ -167,11 +167,12 @@ input {
     box-shadow: 1px 1px 4px #222;
 }
 
-p {
+.pantalla--salida {
     background-color: var(--colorPrimary2);
     font-size: 1.7rem;
     width:100%;
-    height: 100%;
+    height: auto;
+    min-height: 360px;
     margin: 1rem 0;
     padding:.4rem 1rem;
     border:0;
@@ -182,7 +183,8 @@ p {
 .item {
     background-color: #C9E4C5;
     padding: .2rem;
-    height:auto;
+    height: auto;
+    margin: .5rem 0;
 }
 @media (max-width: 800px){
     nav {
@@ -211,6 +213,7 @@ p {
     }
     .pantalla {
         height: auto;
+        min-height: 280px;
     }
     form {
         width:100%;
