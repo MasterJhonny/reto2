@@ -162,17 +162,18 @@ import Alarma from './Alarma.js'
         icones = document.getElementsByClassName("icon-delete");
     }
     console.log(alarmas);
+    
+    actualizarHora();
     let arrayIcon = Object.values(icones)
     for(let i = 0; i < arrayIcon.length; i++) {
         arrayIcon[i].onclick = () => {
             let valorBorrado = alarmas.splice(i, 1)
             printData(alarmas)
             localStorage.setItem('menory', JSON.stringify(alarmas))
+            location.reload()
             console.log(alarmas)
         }
     }
-
-    actualizarHora();
     var intervalo = setInterval(actualizarHora, 999);
     boton.addEventListener("click", crearAlarma);
     boton2.onclick = function() {
