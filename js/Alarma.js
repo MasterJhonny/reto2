@@ -6,3 +6,5 @@ class Alarma {
         this.dias = dias;
     }
 }
+
+export default Alarma

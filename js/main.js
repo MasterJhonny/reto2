@@ -1,8 +1,12 @@
+// importacion de un objeto
+import Alarma from './Alarma.js'
+
 (function(){
     // declaration de variable
     var dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
     var salidaHora = document.getElementById("salidaHora");
     var salidaDia = document.getElementById("salidaDia");
+    var icones;
     // variables of button
     var boton2 = document.getElementById("boton2");
     var boton = document.getElementById("boton");
@@ -73,7 +77,6 @@
 
         // recorer el array de diaSemana
         let arrayValues = Object.values(daysValues)
-        console.log(arrayValues)
         let valor = arrayValues.some(e => {
             return e.checked === true
         })
@@ -147,7 +150,7 @@
     function printData (arrayAlar) {
         pantalla.innerText = ""
         arrayAlar.forEach(e => {
-            pantalla.innerHTML += `<p class="item">La alarma sonara los días ${e.dias} a las <span style="font-size:1.7rem"><b>${e.hora}</b></span> y se dirigira a <a href="${e.url}" target="_blank">${e.url}</a> </p>` 
+            pantalla.innerHTML += `<p class="item">La alarma sonara los días ${e.dias} a las <span style="font-size:1.7rem"><b>${e.hora}</b></span> y se dirigira a <a href="${e.url}" target="_blank">${e.url}</a><span class="icon-delete"><i class="fas fa-trash-alt"></i><span class="aria-label"><b>borrar</b></span></span></p>` 
         }) 
     }
     // validacion del localstora
@@ -156,11 +159,20 @@
             alarmas.push(new Alarma(e.hora, e.url, e.dias))
         })
         printData(alarmas)
+        icones = document.getElementsByClassName("icon-delete");
     }
     console.log(alarmas);
+    let arrayIcon = Object.values(icones)
+    for(let i = 0; i < arrayIcon.length; i++) {
+        arrayIcon[i].onclick = () => {
+            let valorBorrado = alarmas.splice(i, 1)
+            printData(alarmas)
+            localStorage.setItem('menory', JSON.stringify(alarmas))
+            console.log(alarmas)
+        }
+    }
 
     actualizarHora();
-    
     var intervalo = setInterval(actualizarHora, 999);
     boton.addEventListener("click", crearAlarma);
     boton2.onclick = function() {

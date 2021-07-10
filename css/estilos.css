@@ -110,7 +110,7 @@ h1 {
 }
 
 .pantalla--salida {
-    overflow: auto;
+    overflow-y: scroll;
 }
 
 form, label {
@@ -184,8 +184,44 @@ input {
     background-color: #C9E4C5;
     padding: .2rem;
     height: auto;
-    margin: .5rem 0;
+    margin: .7rem 0;
+    border-radius: 5px;
+    position: relative;
 }
+.inter--sec .icon-delete {
+    cursor: pointer;
+    font-size: 2.1rem;
+    color: #C9E4C5;
+    width: 20px;
+    height: 20px;
+    background-color: #171010;
+    opacity: .8;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 8px;
+    right: 4px;
+}
+
+.aria-label {
+    visibility: hidden;
+    display: block;
+    color: #7eca9c;
+    font-size: 1.8rem;
+    padding: 0 .6rem;
+    border-radius: 2px;
+    background-color: #110f0f;
+    opacity: .9;
+    position: absolute;
+    top: -30px;
+    right: -5px;
+    z-index: 2;
+}
+
+.inter--sec .icon-delete:hover .aria-label {
+    visibility: visible;
+}
+
+/* responsive */
 @media (max-width: 800px){
     nav {
         display: none;
