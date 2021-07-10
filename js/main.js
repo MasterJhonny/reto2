@@ -1,6 +1,6 @@
 // importacion de un objeto
 import Alarma from './Alarma.js'
-// import { deleteA } from './delete.js'
+
 (function(){
     // declaration de variable
     var dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
@@ -154,7 +154,6 @@ import Alarma from './Alarma.js'
             pantalla.innerHTML += `<p class="item">La alarma sonara los días ${arrayAlar[i].dias} a las <span style="font-size:1.7rem"><b>${arrayAlar[i].hora}</b></span> y se dirigira a <a href="${arrayAlar[i].url}" target="_blank">${arrayAlar[i].url}</a><span class="icon-delete" data-index="${i}"><span class="aria-label"><b>borrar</b></span></span></p>` 
         } 
     }
-    // fundtio Delete alarma
     
     // validacion del localstora
     if(alarmasMemory){
