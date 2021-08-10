@@ -151,7 +151,7 @@ import Alarma from './Alarma.js'
     function printData (arrayAlar) {
         pantalla.innerText = ""
         for(let i = 0; i < arrayAlar.length; i++) {
-            pantalla.innerHTML += `<p class="item">La alarma sonara los días ${arrayAlar[i].dias} a las <span style="font-size:1.7rem"><b>${arrayAlar[i].hora}</b></span> y se dirigira a <a href="${arrayAlar[i].url}" target="_blank">${arrayAlar[i].url}</a><span class="icon-delete" data-index="${i}"><span class="aria-label"><b>borrar</b></span></span></p>` 
+            pantalla.innerHTML += `<p class="item">La alarma sonara los días ${arrayAlar[i].dias} a las <span style="font-size:1.7rem"><b>${arrayAlar[i].hora}</b></span> y se dirigira al siguiente <a href="${arrayAlar[i].url}" target="_blank">link</a><span class="icon-delete" data-index="${i}"><span class="aria-label"><b>borrar</b></span></span></p>` 
         } 
     }
     
@@ -164,17 +164,18 @@ import Alarma from './Alarma.js'
         
     }
     console.log(alarmas);
-    
-    document.querySelectorAll('.icon-delete').forEach(item => {
-        item.addEventListener("click", (e) => {
+    const btnsDelete = document.getElementsByClassName('icon-delete')
+    Array.prototype.forEach.call(btnsDelete, item => {
+        item.onclick = (e) => {
             let index = e.target.dataset.index
             let valorBorrado = alarmas.splice(index, 1)
             printData(alarmas)
             localStorage.setItem('menory', JSON.stringify(alarmas))
             location.reload()
             console.log(alarmas)
-        })
+        }
     })
+    
     actualizarHora();
     
     var intervalo = setInterval(actualizarHora, 999);
