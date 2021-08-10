@@ -32,8 +32,8 @@
         </section>
         <section class="inter">
             <div class="inter--sec entrada">
-                <form action="">
-                    <label for="">
+                <form action="javascript:void(0)">
+                    <label>
                         <div class="semana">
                             <h4 class="semana--title">Elige el dia de la semana:</h4>
                             <label for="dias">
@@ -66,11 +66,15 @@
                             </label>
                         </div>
                     </label>
-                    <label for="">
+                    <label>
+                        <span><b>nombre</b></span>
+                        <input type="text" id="name" required>
+                    </label>
+                    <label>
                         <span><b>hora</b></span>
                         <input type="time" id="entrada" step="1" required>
                     </label>
-                    <label for="">
+                    <label>
                         <span><b>url</b></span>
                         <input type="text" id="url">
                     </label>
@@ -90,6 +94,7 @@
         </section>
 
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./js/main.js" type="module"></script>
 </body>
 </html>

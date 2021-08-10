@@ -8,13 +8,13 @@ import Alarma from './Alarma.js'
     var salidaDia = document.getElementById("salidaDia");
     
     // variables of button
-    var boton2 = document.getElementById("boton2");
-    var boton = document.getElementById("boton");
-    var sonido = document.getElementById("sonido");
-    var pantalla = document.getElementById("pantalla");
-    var entrada, daysValues, dayWeek, dayActual;
-    var alarmas = new Array();
-    var alarmasMemory = JSON.parse(localStorage.getItem('menory'))
+    let boton2 = document.getElementById("boton2");
+    let boton = document.getElementById("boton");
+    let sonido = document.getElementById("sonido");
+    let pantalla = document.getElementById("pantalla");
+    let entrada, daysValues, dayWeek, dayActual, nombre;
+    let alarmas = new Array();
+    let alarmasMemory = JSON.parse(localStorage.getItem('menory'))
 
     // variables boleanas
     var bolean1 = true;
@@ -30,6 +30,7 @@ import Alarma from './Alarma.js'
                         for(let j = 0; j < alarmas[i].dias.length; j++) {
                             if(alarmas[i].dias[j] === dayActual){
                                 console.log("Ya es hora Señores..................");
+                                swal(`😊`, `Ya son las ${alarmas[i].hora} para ${alarmas[i].name}, nos dirigimos a ${alarmas[i].url}`, 'success')
                                 abrirVinculo(alarmas[i].url);
                                 // sonido.play();
                             }
@@ -72,6 +73,7 @@ import Alarma from './Alarma.js'
     function crearAlarma(){
         // recuperando los vaolres del formulario
         daysValues = document.getElementsByClassName("dias");
+        nombre = document.getElementById("name");
         entrada = document.getElementById("entrada");
         url = document.getElementById("url");
 
@@ -82,7 +84,7 @@ import Alarma from './Alarma.js'
         })
 
         // valudacion de los campos del formulario
-        if(valor && entrada.value != "" && url.value != ""){
+        if(valor && entrada.value != "" && url.value != "" && nombre.value != ""){
             // function para filtra dias
             let daySelect = (arry) => {
                 let nuevoArray = new Array()
@@ -102,16 +104,20 @@ import Alarma from './Alarma.js'
             let dayWeekSelect = daySelect(dayTrue)
 
             // creacion de la alarma
-            alarmas.push(new Alarma(entrada.value, url.value, dayWeekSelect));
+            alarmas.push(new Alarma(nombre.value, entrada.value, url.value, dayWeekSelect));
             console.log(alarmas)
             printData(alarmas)
             localStorage.setItem('menory', JSON.stringify(alarmas))
             console.log(`La Alarma Sonara los dias ${dayWeekSelect} a las ${entrada.value}`);
             bolean1 = true;
             bolean2 = false;
-            location.reload()
+            swal(`😊`, `La actividad se genero correctamente`, 'success')
+            setTimeout(() => {
+                location.reload()
+            }, 1000)
         } else {
-            pantalla.innerText = `!Ingresa todos los campos requeridos¡`
+            // se mustra una vetana emergente para senalar que se debe ingresar todos los datos
+            swal('Alarma Web', 'Lo lamentamos, debes ingresar todos los campos ☹️', 'error')
             bolean2 = true;
         }
         
@@ -151,14 +157,14 @@ import Alarma from './Alarma.js'
     function printData (arrayAlar) {
         pantalla.innerText = ""
         for(let i = 0; i < arrayAlar.length; i++) {
-            pantalla.innerHTML += `<p class="item">La alarma sonara los días ${arrayAlar[i].dias} a las <span style="font-size:1.7rem"><b>${arrayAlar[i].hora}</b></span> y se dirigira al siguiente <a href="${arrayAlar[i].url}" target="_blank">link</a><span class="icon-delete" data-index="${i}"><span class="aria-label"><b>borrar</b></span></span></p>` 
+            pantalla.innerHTML += `<p class="item"><b>${arrayAlar[i].name}</b> se establecio para los días ${arrayAlar[i].dias} a las <span style="font-size:1.7rem"><b>${arrayAlar[i].hora}</b></span> y se redirigira al siguiente <a href="${arrayAlar[i].url}" target="_blank" title="${arrayAlar[i].url}">link</a><span class="icon-delete" data-index="${i}"><span class="aria-label"><b>borrar</b></span></span></p>` 
         } 
     }
     
     // validacion del localstora
     if(alarmasMemory){
         alarmasMemory.forEach(e => {
-            alarmas.push(new Alarma(e.hora, e.url, e.dias))
+            alarmas.push(new Alarma(e.name, e.hora, e.url, e.dias))
         })
         printData(alarmas)
         

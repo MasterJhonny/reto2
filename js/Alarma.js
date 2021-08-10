@@ -1,6 +1,7 @@
 class Alarma {
 
-    constructor(h, url, dias){
+    constructor(name, h, url, dias){
+        this.name = name;
         this.hora = h;
         this.url = url;
         this.dias = dias;
