@@ -69,6 +69,7 @@ main {
     width: 100%;
     height: auto;
     background-color: #40394a;
+    position: relative;
 }
 section {
     width: 90%;
@@ -107,6 +108,13 @@ h1 {
     flex-direction:column;
     align-items:center;
 
+}
+
+.gif {
+    width: 10px;
+    min-width: calc(25vw - 95px);
+    position: absolute;
+    left: calc(10vw - 120px);
 }
 
 .pantalla--salida {
@@ -225,6 +233,11 @@ input {
 }
 
 /* responsive */
+@media (max-width: 1300px){
+    .gif {
+        visibility: hidden;
+    }
+}
 @media (max-width: 800px){
     nav {
         display: none;
@@ -241,6 +254,10 @@ input {
         flex-direction: column;
         height: auto;
     
+    }
+    .gif {
+        position: static;
+        visibility: visible;
     }
 
     section {
@@ -261,5 +278,10 @@ input {
 @media (max-width: 450px) {
     .pantalla {
         width: 90%;
+    }
+    .gif {
+        width: 90%;
+        height: auto;
+        visibility: visible;
     }
 }
