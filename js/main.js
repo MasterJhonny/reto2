@@ -175,7 +175,7 @@ import Alarma from './Alarma.js'
         
     }
     console.log(alarmas);
-    const btnsDelete = document.getElementsByClassName('icon-delete')
+    const btnsDelete = document.getElementsByClassName('icon-delete');
     Array.prototype.forEach.call(btnsDelete, item => {
         item.onclick = (e) => {
             let index = e.target.dataset.index
@@ -187,9 +187,9 @@ import Alarma from './Alarma.js'
         }
     })
     
-    actualizarHora();
-    
-    var intervalo = setInterval(actualizarHora, 999);
+    // actulizar hours
+    actualizarHora()
+    setInterval(actualizarHora, 999);
 
     boton.addEventListener("click", crearAlarma);
     boton2.onclick = function() {
