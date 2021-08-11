@@ -6,6 +6,7 @@ import Alarma from './Alarma.js'
     var dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
     var salidaHora = document.getElementById("salidaHora");
     var salidaDia = document.getElementById("salidaDia");
+    let gif = document.getElementById("gif")
     
     // variables of button
     let boton2 = document.getElementById("boton2");
@@ -32,6 +33,10 @@ import Alarma from './Alarma.js'
                                 console.log("Ya es hora Señores..................");
                                 swal(`😊`, `Ya son las ${alarmas[i].hora} para ${alarmas[i].name}, nos dirigimos a ${alarmas[i].url}`, 'success')
                                 abrirVinculo(alarmas[i].url);
+                                gif.src = 'https://giphy.com/embed/qi29MoLjWNPUI'
+                                setTimeout(() => {
+                                    gif.src = 'https://giphy.com/embed/xT0xeP1oX0sSlD0D4s'
+                                }, 7000) 
                                 // sonido.play();
                             }
                         }
