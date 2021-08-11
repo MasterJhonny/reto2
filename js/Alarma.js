@@ -1,6 +1,6 @@
 class Alarma {
 
-    constructor(name, h, url, dias){
+    constructor(name = 'Actividad', h, url, dias){
         this.name = name;
         this.hora = h;
         this.url = url;
