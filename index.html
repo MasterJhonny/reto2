@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OnTime</title>
+    <title>Alarma Web Application</title>
     <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgfCmSM_bHsjaxvhlvFFmRIlv2yYntKcfXNw&usqp=CAU">
     <link rel="stylesheet" href="./css/estilos.css">
     <script src="https://kit.fontawesome.com/1b9dfdc6dd.js" crossorigin="anonymous"></script>
@@ -12,14 +12,14 @@
 <body>
     <header>
         <div class="logo">
-            <h2>OnTime</h2>
+            <h2>Alarma Web Application</h2>
         </div>
         <nav>
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Contactos</a></li>
-                <li><a href="https://reloj-alarma.es/hora/">Reloj Mundial</a></li>
+                <li><a href="#" class="iten-nav">Inicio</a></li>
+                <li><a href="#" class="iten-nav">Nosotros</a></li>
+                <li><a href="#" class="iten-nav" id="btnMode">Modo Oscuro</a></li>
+                <li><a href="https://reloj-alarma.es/hora/" class="iten-nav">Reloj Mundial</a></li>
             </ul>
         </nav>
     </header>
@@ -27,7 +27,7 @@
         <h1 id="salidaDia">Dia</h1>
         <section>
             <div class="salida">
-                <h1 id="salidaHora">00:00:00</h1>
+                <h1 id="salidaHora" class="hora">00:00:00</h1>
             </div>
         </section>
         <section class="inter">
@@ -97,6 +97,7 @@
         </section>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/sentigs.js"></script>
     <script src="./js/main.js" type="module"></script>
 </body>
 </html>

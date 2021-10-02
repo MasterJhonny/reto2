@@ -1,15 +1,19 @@
 :root {
-    --colorPrimary: #1c1427;
-    --colorPrimary2: #ccffbd;
+    --colorPrimary: #FFC898;
+    --colorfondo: #FAEEE0;
+    --colorfont: #212121;
+    --colorfondoSection: #71EFA3;
+    --colorfondoElements: #ACFFAD;
+    --colorHora: chartreuse;
+
 }
 
 @font-face {
     font-family: 'ds-digitalbold_italic';
     src: url('../digital/ds-digit-webfont.woff2') format('woff2'),
-         url('../digital/ds-digit-webfont.woff') format('woff');
+        url('../digital/ds-digit-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 * {
@@ -23,6 +27,13 @@ html {
     font-family: monospace;
 }
 
+.dark-mode {
+    filter: invert(100%);
+}
+.colorHora {
+    color: chartreuse;
+}
+
 header {
     display: flex;
     justify-content:space-between;
@@ -31,7 +42,7 @@ header {
     align-items:center;
 }
 .logo {
-    color: var(--colorPrimary2);   
+    color: var(--colorfont);   
     font-size: 2.5rem; 
     margin-left: 2rem;
 }
@@ -41,11 +52,12 @@ nav {
 }
 nav ul {
     display:flex;
+    align-items: center;
     list-style: none;
 }
 
-ul a {
-    color: var(--colorPrimary2);
+.iten-nav {
+    color: var(--colorfont);
     text-decoration: none;
     font-size: 1.9rem;
     margin: 2rem;
@@ -54,8 +66,8 @@ ul a {
     border-radius:1rem;
 }
 
-ul a:hover {
-    border: 1px solid var(--colorPrimary2);
+.iten-nav:hover {
+    border: 1px solid var(--colorfont);
 }
 
 main, section, .boton {
@@ -68,7 +80,7 @@ main, section, .boton {
 main {
     width: 100%;
     height: auto;
-    background-color: #40394a;
+    background-color: var(--colorfondo);
     position: relative;
 }
 section {
@@ -81,22 +93,22 @@ section {
 }
 
 h1 {
-    color: var(--colorPrimary2);
+    color: var(--colorfont);
     font-size:7rem;
     text-align: center;
     font-weight: 100;
 }
 
-#salidaHora {
+.hora {
     font-family: 'ds-digitalbold_italic';
-    color: chartreuse;
+    color: var(--colorfont);
     font-size: 13rem;
 }
 .inter {
     display: flex;
     flex-direction:row;
     margin-top: 1rem;
-    background-color:#7eca9c;
+    background-color: var(--colorfondoSection);
     height: auto;
     margin-bottom: 1.2rem;
 }
@@ -131,7 +143,7 @@ span {
 input {
     /* width: 90%; */
     height: 3.5rem;
-    background-color: var(--colorPrimary2);
+    background-color: var(--colorfondoElements);
     border:0;
     border-radius: .6rem;
     padding: 0 .8rem;
@@ -176,7 +188,7 @@ input {
 }
 
 .pantalla--salida {
-    background-color: var(--colorPrimary2);
+    background-color: var(--colorfondoElements);
     font-size: 1.7rem;
     width:100%;
     height: auto;

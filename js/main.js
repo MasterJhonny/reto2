@@ -189,7 +189,7 @@ import Alarma from './Alarma.js'
     
     // actulizar hours
     actualizarHora()
-    setInterval(actualizarHora, 999);
+    setInterval(actualizarHora, 998);
 
     boton.addEventListener("click", crearAlarma);
     boton2.onclick = function() {
