@@ -33,6 +33,9 @@ html {
 .colorHora {
     color: chartreuse;
 }
+.flex {
+    display: flex;
+}
 
 header {
     display: flex;
@@ -42,6 +45,9 @@ header {
     align-items:center;
 }
 .logo {
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
     color: var(--colorfont);   
     font-size: 2.5rem; 
     margin-left: 2rem;
@@ -68,6 +74,19 @@ nav ul {
 
 .iten-nav:hover {
     border: 1px solid var(--colorfont);
+}
+
+.btn-nav {
+    display: none;
+    width: 35px;
+    height: 35px;
+    color: #110f0f;
+    background-color: var(--colorPrimary);
+    background: url(https://cdn-icons-png.flaticon.com/512/2099/2099153.png); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    cursor: pointer;
 }
 
 main, section, .boton {
@@ -251,8 +270,33 @@ input {
     }
 }
 @media (max-width: 800px){
+    header {
+        height: auto;
+        flex-direction: column;
+    }
+    .logo {
+        width: 100%;
+    }
     nav {
+        width: 100%;
         display: none;
+    }
+    
+    nav ul {
+        width: 100%;
+        flex-direction: column;
+    }
+    nav ul li {
+        width: 100%;
+    }
+    nav .iten-nav {
+        display: block;
+        width: 100%;
+        margin: 1rem 0;
+        text-align: center;
+    }
+    #btnMenu {
+        display: flex;
     }
     h1 {
         font-size:3rem;
