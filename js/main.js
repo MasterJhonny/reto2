@@ -24,6 +24,7 @@ import Alarma from './Alarma.js'
 
     // function de actualizar la hora actual
     function actualizarHora(){
+        // console.time('time')
         function ejecutar(){
             if(bolean1 === true){
                 for(let i = 0; i < alarmas.length; i++){
@@ -47,7 +48,7 @@ import Alarma from './Alarma.js'
         let date = new Date();
         let diaSemana = date.getDate();
         let dia = date.getDay();
-        let hora = date.getHours()<10 ? "0" + date.getHours() : date.getHours();;
+        let hora = date.getHours()<10 ? "0" + date.getHours() : date.getHours();
         let minuto = date.getMinutes()<10 ? "0" + date.getMinutes() : date.getMinutes();
         let segundo = date.getSeconds()<10 ? "0" + date.getSeconds() : date.getSeconds();
         horaActual = `${hora}:${minuto}:${segundo}`;
@@ -62,6 +63,7 @@ import Alarma from './Alarma.js'
         } else {
             salidaDia.innerText = `${dias[dia-1]} ${diaSemana}`;
         }
+        // console.timeEnd('time')
     }
     function demo(item){
         item = item.toString();
@@ -189,7 +191,9 @@ import Alarma from './Alarma.js'
     
     // actulizar hours
     actualizarHora()
-    setInterval(actualizarHora, 998);
+    
+    setInterval(actualizarHora, 999.5);
+    
 
     boton.addEventListener("click", crearAlarma);
     boton2.onclick = function() {
